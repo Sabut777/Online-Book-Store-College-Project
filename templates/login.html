@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="row my-4">
+    <div class="col-md-6 offset-md-3">
+        <div class="border p-3 bg-white">
+            <h4>Login Page For Admin</h4>
+            <p>After login admin  can able to access Add Books feature in index page</p>
+            <hr>
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-grop">
+                    <label for="exampleInputEmail1">Username</label>
+                    <input type="text" class="form-control"placeholder="Username" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" placeholder="Password" name="password">
+                  </div>
+                  <br>
+                  <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- <form method="POST">
+    {% csrf_token %}
+    <div class="form-group offset-3">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="text" class="form-control"placeholder="Enter email" name="username">
+      
+    </div>
+    <div class="form-group offset-3">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" placeholder="Password" name="password">
+    </div>
+    
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+
+  <li class="nav-item">
+    
+  </li> -->
+
+
+  {% endblock %}

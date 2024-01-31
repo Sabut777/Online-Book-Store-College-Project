@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<div class="container m-2" >
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Categories 
+                </div>
+
+               <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'index' %}">All</a>
+
+                </li>
+                {% for category in categories %}
+                <li class="list-group-item">
+                  <a href="{% url 'index' %}?category={{category.name}}">
+                    {{category.name}}
+
+                  </a>
+                </li>
+                {% endfor %}
+                  
+                 
+                {% if user.is_authenticated and user.is_staff %}
+
+                  <a href="{% url 'add_photo' %}" class="btn btn-outline-primary btn-sm m-1">Add New Book</a>
+
+                {% endif %}
+                </ul>
+              </div>
+
+              <div class="card" style="width: 18rem;">
+                <div class="card-header">
+                  Sort by 
+                </div>
+
+               <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <a href="{% url 'order_price' %}">Expensive</a>
+                  </li>
+                  <li class="list-group-item">
+                    <a href="{% url 'order_name' %}">Book Name (A-Z)</a>
+                    </li>
+
+                
+                 
+
+                 
+              </div>
+              
+              
+              
+        </div>
+
+
+        
+    
+    <div class="col-md-9">
+     
+        <div class="row">
+
+          {% for book in books %}
+            <div class="col-md-4">
+             
+                <div class="card">
+                  
+                    <img class="card-img-top" src="{{book.image.url}}" alt="Card image cap" style="height: 200px;" >
+                    <div class="card-body">
+                      <h5 class="card-title">Category: {{book.category.name}}</h5>
+                      <b class="card-text">Name: {{book.name}}</b><br>
+                      <b class="card-text">Price: {{book.price}}</b><br>
+
+                      <b class="card-text">Author: {{book.author}}</b>
+
+                      
+                    </div>
+                    <a href="{% url 'view_photo' book.id %}" class="btn btn-outline-primary btn-sm m-1">View</a>
+                  </div>
+                 </div>
+                 {% empty %}
+                 <h1>Sorry nothings Available at the moment</h1>
+            {% endfor %}
+            
+               
+
+            
+                
+
+            </div>
+           
+        </div>
+        
+    </div>
+</div>
+
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="container m-5">
+        <div class="row">
+            <div class="col-md-8">
+
+                <img src="{{ book.image.url }}">
+                <p>{{book.description}}</p>
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}
